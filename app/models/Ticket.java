@@ -19,5 +19,9 @@ public class Ticket extends Model {
     public String name;
     public String description;
     
+    @ManyToMany
+    public List<Tag> tags;
+    
+
     
 }
