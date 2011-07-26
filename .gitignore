@@ -2,3 +2,4 @@ nbproject
 tmp
 db/*
 test-result
+*.iml
