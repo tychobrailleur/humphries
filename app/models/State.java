@@ -2,7 +2,7 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
- 
+
 import play.db.jpa.*;
 
 /**
@@ -11,7 +11,7 @@ import play.db.jpa.*;
  * states are project-specific
  */
 @Entity
-public class State  extends Model {
+public class State extends Model {
 
     public String name;
     public String description;
