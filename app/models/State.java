@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.util.*;
@@ -11,15 +7,22 @@ import play.db.jpa.*;
 
 /**
  *
- * @author pierre
+ * In order to allow project specific workflow, 
+ * states are project-specific
  */
 @Entity
 public class State  extends Model {
 
+    public String name;
+    public String description;
+
     @ManyToMany
     public List<Tag> tags;
     
-
-    
+    // FIXME : the workflow is linked to the project
+    @ManyToOne
+    public Project project;
+   
+   
 
 }

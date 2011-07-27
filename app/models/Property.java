@@ -17,9 +17,15 @@ import play.db.jpa.*;
 @Entity
 public class Property  extends Model{
 
+    public String name;
+    public String description;
     
     @ManyToMany
     public List<Tag> tags;
+    
+    // TODO: add type , value, etc.
+    // need to define properly how we intend to 
+    // implement generic properties
     
     
 }

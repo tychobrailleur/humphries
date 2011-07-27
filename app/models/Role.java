@@ -11,7 +11,9 @@ import play.db.jpa.*;
 
 /**
  *
- * @author pierre
+ * This class reprents a security role
+ * Roles cans be assigned to users and groups of users
+ *  
  */
 @Entity
 public class Role  extends Model{

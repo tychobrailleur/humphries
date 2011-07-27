@@ -20,6 +20,9 @@ public class Workflow  extends Model {
     @ManyToMany
     public List<Tag> tags;
     
-
+    @OneToOne
+    public List<State> states;
+    
+    PUBLIC
     
 }

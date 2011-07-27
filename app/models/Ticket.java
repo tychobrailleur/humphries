@@ -10,7 +10,6 @@ import javax.persistence.*;
 import play.db.jpa.*;
 /**
  *
- * @author pierre
  */
 @Entity
 public class Ticket extends Model {
@@ -22,6 +21,7 @@ public class Ticket extends Model {
     @ManyToMany
     public List<Tag> tags;
     
-
+    @ManyToOne 
+    public Project project;
     
 }

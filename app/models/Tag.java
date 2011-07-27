@@ -11,13 +11,12 @@ import play.db.jpa.*;
 
 /**
  *
- * @author pierre
  */
 @Entity
 public class Tag  extends Model {
 
-    @ManyToMany
-    public List<Tag> tags;
-    
+    public String name;
+    public String description;
+
     
 }
