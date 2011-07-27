@@ -4,10 +4,10 @@ end
 
 When /^I go to the ([^ ]+) page$/ do |page|
   puts "Visiting /#{page}"
-  visit "/#{page}"
+  visit "http://localhost:9000/#{page.downcase}"
 end
 
-Then /^I should see "([^"]*)" for "([^"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see "([^"]*)" for "([^"]*)"$/ do |action, entity|
+  response.body.should contain(entity)
 end
 
