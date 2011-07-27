@@ -1,10 +1,9 @@
 
 import org.junit.*;
-import java.util.*;
+
+
 import models.Ticket;
-import org.h2.engine.User;
 import play.test.*;
-//import models.*;
 
 public class TicketTest extends UnitTest {
 
