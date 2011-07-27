@@ -1,4 +1,5 @@
 nbproject
+.idea
 tmp
 db/*
 test-result
