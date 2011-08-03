@@ -1,5 +1,9 @@
 nbproject
 .idea
+.settings
+.classpath
+.project
+target
 tmp
 db/*
 test-result
