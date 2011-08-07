@@ -8,3 +8,5 @@ tmp
 db/*
 test-result
 *.iml
+*.log
+web-app/WEB-INF/classes

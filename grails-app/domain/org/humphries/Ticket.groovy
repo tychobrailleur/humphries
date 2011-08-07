@@ -5,6 +5,7 @@ class Ticket {
     String reference
     String description
 
+	static belongsTo = [project:Project]
     static hasMany = [tags:Tag]
 
     static constraints = {
