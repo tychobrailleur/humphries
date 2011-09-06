@@ -9,6 +9,8 @@ import org.humphries.*
 
 class BootStrap {
 
+    def springSecurityService
+
     def init = { servletContext ->
         def humphriesProject = new Project(name: "Humphries", code: "HUMP")
         def introTag = new Tag(name: "Intro")
