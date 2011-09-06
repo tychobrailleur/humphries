@@ -18,6 +18,9 @@ Grails
 Command Summary
 ---------------
 
+Here is a quick Grails command summary, useful when switching from one stack
+to another!
+
 * Run the app
 
     grails run-app
@@ -29,3 +32,12 @@ Command Summary
 * Create a controller for MyNewClass (MyNewClassController)
 
     grails create-controller org.humphries.MyNewClass
+    
+Questions
+---------
+
+# When to use custom controllers vs. scaffolding?
+# Unit testing: what to test vs. not to test (tied to scaffolding)?
+# Cucumber?
+# Licensing
+
