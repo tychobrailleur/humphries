@@ -10,3 +10,22 @@ Roadmap
 =======
 
 
+
+
+Grails
+======
+
+Command Summary
+---------------
+
+* Run the app
+
+    grails run-app
+    
+* Create a domain object
+
+    grails create-domain-class org.humphries.MyNewClass
+    
+* Create a controller for MyNewClass (MyNewClassController)
+
+    grails create-controller org.humphries.MyNewClass
