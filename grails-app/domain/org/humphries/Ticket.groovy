@@ -1,9 +1,14 @@
 package org.humphries
 
+import org.humphries.auth.*
+
 class Ticket {
     String name
     String reference
     String description
+    
+    User creator
+    User assignedTo
 
     static belongsTo = [project:Project]
     static hasMany = [tags:Tag, notes:Note]
@@ -12,5 +17,6 @@ class Ticket {
         name(blank: false)
         reference(blank: false)
         description(blank: false)
+        assignedTo(nullable: true)
     }
 }

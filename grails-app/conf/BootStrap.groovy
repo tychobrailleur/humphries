@@ -1,4 +1,5 @@
 import org.humphries.*
+import org.humphries.auth.*
 
 /*
 
@@ -9,11 +10,20 @@ import org.humphries.*
 
 class BootStrap {
 
-    def springSecurityService
-
     def init = { servletContext ->
         def humphriesProject = new Project(name: "Humphries", code: "HUMP")
         def introTag = new Tag(name: "Intro")
+        
+        if (!User.count()) {
+            def userPermission = new Permission(authority: 'USER').save()
+            
+            def password = 'password'
+            
+            [pierre: 'Pierre Rust', seb: 'Sébastien Le Callonnec'].each { username, displayName ->
+                def user = new User(username: username, displayName: displayName, password: password, enabled: true).save()
+                UserPermission.create(user, userPermission, true)
+            }
+        }
  
         if (!Project.count()) {
             humphriesProject.save(failOnError: true)
@@ -29,9 +39,12 @@ class BootStrap {
                 reference: "HUMP-1",
                 description: "Exploratory spike on grails",
                 project: humphriesProject,
+                creator: User.get(1),
                 tag: introTag).save(failOnError: true)
         }
     }
+
     def destroy = {
     }
 }
+
