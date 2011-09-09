@@ -12,4 +12,3 @@ class Tag {
         description(nullable: true)
     }
 }
-
