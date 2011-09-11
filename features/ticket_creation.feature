@@ -5,5 +5,18 @@ Feature: Ticket Creation
   
   Scenario: Create a ticket
     Given I am logged in as Administrator
-    When I go to the Admin page
-    Then I should see "Add" for "Tickets"
+    When I go to the Ticket page
+    Then I should see "New Ticket"
+    
+    Given I am on the "Ticket List" page
+    When I click on the "New Ticket" link
+    Then I should see "Create Ticket"
+    
+    Given I am on the "Create Ticket" page
+    When I fill "name" with "This is a test"
+    And I fill "reference" with "HUMP-12"
+    And I fill "description" with "Lorem ipsum"
+    And I click on the "create" button 
+    Then I should see "This is a test" # For some strange reason, mechanize cannot see the response after page is submitted
+    And I should see "HUMP-12"
+    And I should see "Lorem ipsum"

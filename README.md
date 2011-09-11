@@ -37,3 +37,14 @@ to another!
 1. Cucumber?
 1. Licensing
 
+
+# Cucumber
+
+Install cucumber:
+
+        gem install cucumber mechanize
+
+Running Cucumber:
+
+        cucumber features/ticket_creation.feature
+

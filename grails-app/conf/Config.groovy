@@ -93,3 +93,8 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.humphries.auth.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.humphries.auth.UserPermission'
 grails.plugins.springsecurity.authority.className = 'org.humphries.auth.Permission'
+
+// Add security configuration here...
+
+
+

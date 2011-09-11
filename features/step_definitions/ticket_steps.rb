@@ -2,12 +2,28 @@ Given /^I am logged in as (.*)$/ do |role|
   # for the moment, do nothing
 end
 
-When /^I go to the ([^ ]+) page$/ do |page|
-  puts "Visiting /#{page}"
-  visit "http://localhost:9000/#{page.downcase}"
+Given /^I am on the "([^"]*)" page/ do |page|
+  response.body.should contain("#{page}")
 end
 
-Then /^I should see "([^"]*)" for "([^"]*)"$/ do |action, entity|
-  response.body.should contain(entity)
+When /^I go to the ([^ ]+) page$/ do |page|
+  puts "Visiting /#{page}"
+  visit "http://localhost:8080/humphries/#{page.downcase}"
+end
+
+When /^I click on the "([^"]*)" link$/ do |link|
+  click_link link
+end
+
+When /^I click on the "([^"]*)" button$/ do |button|
+  click_button button
+end
+
+When /^I fill "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in field, :with => value
+end 
+
+Then /^I should see "([^"]*)"$/ do |action|
+  response.body.should contain(action)
 end
 
