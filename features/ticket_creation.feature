@@ -1,3 +1,4 @@
+@wip
 Feature: Ticket Creation
   As an Administrator
   I want to be able to create a ticket
@@ -17,6 +18,9 @@ Feature: Ticket Creation
     And I fill "reference" with "HUMP-12"
     And I fill "description" with "Lorem ipsum"
     And I click on the "create" button 
-    Then I should see "This is a test" # For some strange reason, mechanize cannot see the response after page is submitted
+    # For some strange reason, webrat/ mechanize cannot see the response 
+    # after page is submitted, so must explicitly go to the list page.
+    And go to the Ticket page
+    Then I should see "This is a test" 
     And I should see "HUMP-12"
     And I should see "Lorem ipsum"

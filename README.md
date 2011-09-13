@@ -13,6 +13,12 @@ TBD
 # Grails
 
 
+## Documentation
+
+* [User Guide](http://grails.org/doc/latest/)
+
+
+
 ## Command Summary
 
 Here is a quick Grails command summary, useful when switching from one stack
@@ -29,12 +35,17 @@ to another!
 * Create a controller for MyNewClass (MyNewClassController)
 
         grails create-controller org.humphries.MyNewClass
-    
+
+
+
+
 ## Questions
 
 1. When to use custom controllers vs. scaffolding?
+
+    → Pierre: also, dynamic scaffolding vs. static scaffolding?
+
 1. Unit testing: what to test vs. not to test (tied to scaffolding)?
-1. Cucumber?
 1. Licensing
 
 
@@ -44,7 +55,11 @@ Install cucumber:
 
         gem install cucumber mechanize
 
-Running Cucumber:
+Running Cucumber for a specific feature file:
 
         cucumber features/ticket_creation.feature
+
+Running specific tags:
+
+        cucumber --tags @wip
 

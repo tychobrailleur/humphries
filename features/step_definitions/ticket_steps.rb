@@ -20,10 +20,15 @@ When /^I click on the "([^"]*)" button$/ do |button|
 end
 
 When /^I fill "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in field, :with => value
+  fill_in Regexp.new(field), :with => value
 end 
 
+Then /^go to the ([^ ]+) page$/ do |page|
+  puts "Visiting /#{page}"
+  visit "http://localhost:8080/humphries/#{page.downcase}"
+end
+
 Then /^I should see "([^"]*)"$/ do |action|
-  response.body.should contain(action)
+  response.should contain(action)
 end
 
