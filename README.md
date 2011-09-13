@@ -63,3 +63,7 @@ Running specific tags:
 
         cucumber --tags @wip
 
+
+## Questions, issues
+
+* Webrat vs. Capybara?
