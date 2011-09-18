@@ -9,6 +9,9 @@ class Ticket {
     
     User creator
     User assignedTo
+    
+    Date dateCreated
+    Date lastUpdated
 
     static belongsTo = [project:Project]
     static hasMany = [tags:Tag, notes:Note]
