@@ -16,9 +16,19 @@ body {
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
 }
-#grailsLogo {
-	padding:20px;
+
+#header {
+  background-color: #000;
 }
+
+#header h1 {
+  margin: 0;
+  padding: 5px;
+  font: 24px Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: #fff;
+}
+
 
 a:link, a:visited, a:hover {
     color: #666;
@@ -45,12 +55,12 @@ input, select, textarea {
     padding: 2px 4px;
 }
 select {
-   padding: 2px 2px 2px 0;
+    padding: 2px 2px 2px 0;
 }
 textarea {
-	width: 250px;
-	height: 150px;
-	vertical-align: top;
+    width: 250px;
+    height: 150px;
+    vertical-align: top;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -68,7 +78,6 @@ input:focus, select:focus, textarea:focus {
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
     border-style: solid none solid none;
-    margin-top: 5px;
     padding: 7px 12px;
 }
 
@@ -118,7 +127,7 @@ div.errors ul {
     padding: 0;
 }
 div.errors li {
-	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
     line-height: 16px;
     padding-left: 30px;
 }
