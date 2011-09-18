@@ -8,6 +8,12 @@
         <h1>${ticket.name}</h1>
         <p>${ticket.reference}</p>
         <p>${ticket.description}</p>
+        
+        <dl>
+          <dt><g:message code="created.by" /></dt>
+          <dd>${ticket.creator}</dd>
+        </dl>
+        
         <g:if test="${ticket.notes}">
             <ul>
             <g:each in="${ticket.notes}" var="note">
