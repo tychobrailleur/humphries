@@ -1,6 +1,6 @@
 @wip
 Feature: Ticket Creation
-  As a authenticated user
+  As an authenticated user
   I want to be able to create a ticket
   So that I can log a new defect
   

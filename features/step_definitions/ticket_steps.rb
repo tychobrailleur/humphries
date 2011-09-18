@@ -9,5 +9,5 @@ end
 
 Then /^"([^"]+)" should be in the ticket list$/ do |ticket|
   visit 'http://localhost:8080/humphries/ticket/list'
-  response.should contain('This is a test')
+  response.should contain(ticket)
 end
