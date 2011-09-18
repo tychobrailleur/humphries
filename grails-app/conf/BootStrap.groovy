@@ -15,13 +15,17 @@ class BootStrap {
         def introTag = new Tag(name: "Intro")
         
         if (!User.count()) {
-            def userPermission = new Permission(authority: 'USER').save()
+            def userPermission = new Permission(authority: 'USER_ROLE').save(flush:true)
+            def adminPermission = new Permission(authority: 'ADMIN_ROLE').save(flush: true)
             
             def password = 'password'
             
             [pierre: 'Pierre Rust', seb: 'Sébastien Le Callonnec'].each { username, displayName ->
                 def user = new User(username: username, displayName: displayName, password: password, enabled: true).save()
                 UserPermission.create(user, userPermission, true)
+                if (username == 'pierre') {
+                    UserPermission.create(user, adminPermission, true)
+                }
             }
         }
  

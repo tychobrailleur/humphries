@@ -96,5 +96,3 @@ grails.plugins.springsecurity.authority.className = 'org.humphries.auth.Permissi
 
 // Add security configuration here...
 
-
-
