@@ -29,6 +29,28 @@ body {
   color: #fff;
 }
 
+#header a:link, #header a:visited, #header a:hover, #header a:active {
+  color :#fff;
+}
+
+#info {
+  width: auto;
+  height: 20px;
+  border-bottom: 1px dotted #333;
+  padding: 5px 15px 2px 0;
+}
+
+#info ul {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
+
+#info ul li {
+  list-style: none;
+  display: inline;
+  padding-right: 5px;
+}
 
 a:link, a:visited, a:hover {
     color: #666;
