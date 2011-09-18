@@ -37,6 +37,9 @@ to another!
         grails create-controller org.humphries.MyNewClass
 
 
+### Spring Security plugin 
+
+* [Documentation](http://grails-plugins.github.com/grails-spring-security-core/docs/manual/)
 
 
 ## Questions
