@@ -1,3 +1,8 @@
+#
+# Ticket steps.
+#
+
+
 When /^I create a ticket "([^"]+)" with reference "([^"]+)"$/ do |name, reference|
   visit 'http://localhost:8080/humphries/ticket/list'
   click_link 'New Ticket'

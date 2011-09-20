@@ -1,4 +1,3 @@
-@wip
 Feature: Ticket Creation
   As an authenticated user
   I want to be able to create a ticket
