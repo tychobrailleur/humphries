@@ -11,10 +11,8 @@ class TicketController {
 
     // gets a ticket by its id, and returns a ticket for the show view
     def show = {
-      def ticket = Ticket.get(params.id)
-      [ticket: ticket]
+      [ticket: Ticket.get(params.id)]
     }
-    
     
     def addNote = {
         def ticket = Ticket.get(params.ticketId)
@@ -28,6 +26,6 @@ class TicketController {
     def getNotes = {
         //debug "get notes"
         def ticket = Ticket.get(params.ticketId)
-        render ticket.notes as JSON        
+        render ticket.notes as JSON
     }
 }

@@ -1,5 +1,7 @@
 package org.humphries
 
+import org.humphries.auth.User
+
 class Note {
 
     User author
