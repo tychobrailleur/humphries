@@ -1,8 +1,10 @@
 package org.humphries
 
+import org.humphries.auth.*
+
 class Note {
 
-    User author
+    User creator
     Date creationDate
 
     String text
@@ -11,4 +13,8 @@ class Note {
     static constraints = {
         text(blank: false)
     }
+     static mapping = {
+        creator fetch: 'join'
+    }
+
 }
