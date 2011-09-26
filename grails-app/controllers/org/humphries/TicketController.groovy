@@ -17,10 +17,8 @@ class TicketController {
 
     // gets a ticket by its id, and returns a ticket for the show view
     def show = {
-      def ticket = Ticket.get(params.id)
-      [ticket: ticket]
+      [ticket: Ticket.get(params.id)]
     }
-
 
     // be carefull with security constraints on an action that will be called
     // with ajax : a login redirection will generally be interpreted as sucess 
@@ -42,8 +40,6 @@ class TicketController {
         def ticket = Ticket.get(params.ticketId)
         log.error( "get notes + "+ ticket.id)
         
-        log.error("test log !!")
-        
         //def ns = ticket.notes
         //def converter = n as JSON
         //log.debug( converter.toString())
@@ -62,6 +58,5 @@ class TicketController {
 	    		}
 	    	}
 	    }
-
-    }
+   }
 }

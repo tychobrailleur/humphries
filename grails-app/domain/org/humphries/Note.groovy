@@ -1,6 +1,6 @@
 package org.humphries
 
-import org.humphries.auth.*
+import org.humphries.auth.User
 
 class Note {
 
