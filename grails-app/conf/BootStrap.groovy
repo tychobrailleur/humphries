@@ -30,7 +30,20 @@ class BootStrap {
         }
  
         if (!Project.count()) {
+//            humphriesProject.addToVersions(
+//                new Version( versionNum: '0.0.1', 
+//                    name: 'very first version',
+//                    creator: User.get(1), 
+//                    creationDate: new Date()))
             humphriesProject.save(failOnError: true)
+        }
+        if (! Version.count()){
+            new Version( versionNum: '0.0.1', 
+                name: 'very first version',
+                creator: User.get(1), 
+                creationDate: new Date(),
+                project: humphriesProject).save(failOnError: true)
+        
         }
 
         if (!Tag.count()) {

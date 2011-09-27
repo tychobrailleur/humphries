@@ -20,8 +20,8 @@
                 <g:each in="${ticket.notes}" var="note">
                     <li id="note_${note.id}">
                         <div class="creationDate">${note.creationDate}</div>
-                      
-                        <div class="text"> ${note.text}</div>
+                        <div class="author">${note.creator.name}</div>
+                        <div class="text">${note.text}</div>
                     </li>
                 </g:each>
                 </ul>

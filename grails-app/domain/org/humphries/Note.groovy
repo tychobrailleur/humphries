@@ -13,7 +13,7 @@ class Note {
     static constraints = {
         text(blank: false)
     }
-     static mapping = {
+    static mapping = {
         creator fetch: 'join'
     }
 

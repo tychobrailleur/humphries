@@ -19,11 +19,25 @@ class TicketController {
     def show = {
       [ticket: Ticket.get(params.id)]
     }
+    
+    @Secured(['isAuthenticated()'])
+    //@Secured(['isFullyAuthenticated()'])
+    def create = {
+        def project = Project.get(params.projectId)
+        def user = User.get(springSecurityService.principal.id)
+        
+        def ticket = new Ticket( name: params.name, 
+            description: params.description,
+            code: params.code,
+            creator: user,
+            dateCreated: new Date())
+        ticket.save(failOnError: true)
+    }
+       
 
     // be carefull with security constraints on an action that will be called
     // with ajax : a login redirection will generally be interpreted as sucess 
     @Secured(['isAuthenticated()'])
-//      @Secured(['isFullyAuthenticated()'])
     def addNote = {
         log.debug(" addNote ")
         def ticket = Ticket.get(params.ticketId)
