@@ -1,22 +1,17 @@
-require 'rubygems'
 require 'rspec'
-require 'webrat'
+require 'htmlentities'
+require "webrat/selenium"
 
 Webrat.configure do |config|
-  config.mode = :mechanize
+  config.mode = :selenium
+  config.selenium_browser_key = ENV['SELENIUM_BROWSER'] || "*firefox"
+  config.selenium_server_address = 'localhost'
+  config.application_framework = :external
+  config.application_address = 'localhost'
+  config.application_port = 8080
+#  config.selenium_verbose_output = true # Prints out HTML if needed.
 end
 
-class MechanizeWorld < Webrat::MechanizeAdapter
-  include Webrat::Matchers
-  include Webrat::Methods
-  # no idea why we need this but without it response_code is not always recognized
-  Webrat::Methods.delegate_to_session :response_code, :response_body
-  # this is needed for webrat_steps.rb
-  Webrat::Methods.delegate_to_session :response
-end
-
-World do
-  MechanizeWorld.new
-end
-World(Webrat::Methods)
-World(Webrat::Matchers)
+#this is necessary to have webrat "wait_for" the response body to be available
+#when writing steps that match against the response body returned by selenium
+World(Webrat::Selenium::Matchers)

@@ -9,10 +9,7 @@ Feature: Project Management
     Then "Humphries" should be in the project list
 
   @wip
-  # FIXME, see project steps.
-  # This test is failing because of an issue with webrat/mechanize
-  # that doesn't see pages after forms are submitted or links are clicked.
   Scenario: Add a project member
     Given I am logged in as Administrator
-    When I add "Sébastien" as a "Humphries" project member
+    When I add "Sébastien Le Callonnec" as a "Humphries" project member
     Then "Sébastien" should be a member of the "Humphries" project

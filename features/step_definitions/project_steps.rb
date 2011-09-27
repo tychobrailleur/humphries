@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # Projects steps.
 #
@@ -17,15 +18,9 @@ end
 
 When /^I add "([^"]+)" as a "([^"]+)" project member$/ do |user, project|
   visit 'http://localhost:8080/humphries/project/list'
-  click_link project
-  
-  # FIXME
-  # And here we go again: once we have clicked the link, webrat 
-  # cannot see the response...
-  #
-  
-  click_link 'Edit'
-  select Regexp.new("#{user}.*"), :from => members
+  click_link "#{project.downcase}_1"
+  click_button 'Edit'
+  select user, :from => 'members'
   click_button 'Update'
 end
 
@@ -36,6 +31,6 @@ end
 
 Then /^"([^"]+)" should be a member of the "([^"]+)" project$/ do |user, project|
   visit 'http://localhost:8080/humphries/project/list'
-  click_link project
+  click_link "#{project.downcase}_1"
   response.should contain(user)
 end

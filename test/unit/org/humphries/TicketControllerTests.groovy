@@ -16,10 +16,10 @@ class TicketControllerTests extends ControllerUnitTestCase {
     }
 
     void testShow() {
-        TicketController.metaClass.getParams = {-> [id:1] }
         def testTicket = new Ticket(id: 1, name: 'foobar', 
                 description: 'quxbaz')
         mockDomain(Ticket, [testTicket])
+        mockParams.id = 1
         
         def returnValue = ticketController.show()
         assertNotNull returnValue
@@ -31,11 +31,11 @@ class TicketControllerTests extends ControllerUnitTestCase {
     }
     
     void testAddNote() {
-        TicketController.metaClass.getParams = { -> 
-                [ticketId: 1, noteText: 'foobar']}
         def testTicket = new Ticket(id: 1, name: 'foobar', 
                 description: 'quxbaz')
         mockDomain(Ticket, [testTicket])
+        mockParams.ticketId = 2
+        mockParams.noteText = 'foobar'
         
         ticketController.addNote()
         

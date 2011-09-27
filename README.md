@@ -56,7 +56,11 @@ to another!
 
 Install cucumber:
 
-        gem install cucumber mechanize
+        gem install cucumber webrat Selenium
+
+Start Selenium:
+
+        selenium
 
 Running Cucumber for a specific feature file:
 
@@ -66,6 +70,15 @@ Running specific tags:
 
         cucumber --tags @wip
 
+# Webrat+Selenium
+
+We have only been able to run Selenium against an old version of Firefox (i.e. 3.6.23) on Ubuntu, not against more recent versions. 
+
+Set firefox executable path as follows on the command line:
+
+       export SELENIUM_BROWSER="*firefox /path/to/firefox"
+
+Webrat documentation: http://rdoc.info/github/brynary/webrat/master/frames
 
 ## Questions, issues
 
