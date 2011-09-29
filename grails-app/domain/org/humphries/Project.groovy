@@ -28,7 +28,7 @@ class Project {
         tickets:Ticket,
         members: User, 
         subProjects: Project
-        ]
+    ]
 
     static constraints = {
         name(blank: false)

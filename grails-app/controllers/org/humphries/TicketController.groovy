@@ -17,23 +17,24 @@ class TicketController {
 
     // gets a ticket by its id, and returns a ticket for the show view
     def show = {
-      [ticket: Ticket.get(params.id)]
+        [ticket: Ticket.get(params.id)]
     }
     
     @Secured(['isAuthenticated()'])
     //@Secured(['isFullyAuthenticated()'])
     def create = {
-        def project = Project.get(params.projectId)
-        def user = User.get(springSecurityService.principal.id)
+        if (request.method == "POST") {
+            def project = Project.get(params.projectId)
+            def user = User.get(springSecurityService.principal.id)
         
-        def ticket = new Ticket( name: params.name, 
-            description: params.description,
-            code: params.code,
-            creator: user,
-            dateCreated: new Date())
-        ticket.save(failOnError: true)
+            def ticket = new Ticket(name: params.name, 
+                description: params.description,
+                code: params.code,
+                creator: user,
+                dateCreated: new Date())
+            ticket.save(failOnError: true)
+        }
     }
-       
 
     // be carefull with security constraints on an action that will be called
     // with ajax : a login redirection will generally be interpreted as sucess 
@@ -52,25 +53,23 @@ class TicketController {
 
     def getNotesJSON = {
         def ticket = Ticket.get(params.ticketId)
-        log.error( "get notes + "+ ticket.id)
+        log.debug("get notes + " + ticket.id)
         
-        //def ns = ticket.notes
-        //def converter = n as JSON
-        //log.debug( converter.toString())
-        //render converter
         def results = ticket.notes
         
         render(contentType:"text/json") {
-    		notes=array{
-	    		for(n in results) {
-	    			note={id=n.id 
-	    			      text=n.text
-	    			      creationDate=n.creationDate
-	    			      creator={ id = n.creator.id
-	    			        name = n.creator.displayName}
-	    			     }
-	    		}
-	    	}
-	    }
-   }
+            notes = array {
+                for (n in results) {
+                    note = {id = n.id 
+                          text = n.text
+                          creationDate = n.creationDate
+                          creator = {
+                                id = n.creator.id
+                                name = n.creator.displayName
+                          }
+                     }
+                }
+            }
+        }
+    }
 }
