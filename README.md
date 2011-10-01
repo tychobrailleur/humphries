@@ -10,6 +10,42 @@ worth looking at.
 TBD
 
 
+# TODO
+
+
+## Project
+
+* Create project
+* Add/remove member
+* Tag/untag project
+
+## User
+
+* Registration
+* Edit profile
+
+
+## Ticket
+
+* Create ticket
+* Edit ticket
+* Delete ticket
+* Change ticket status
+* Assign ticket
+* Tag/untag ticket
+* Add comments to ticket
+
+## Dashboard
+
+* project list
+* ticket list
+
+## Search
+
+* ticket by title, tag, description
+* project by name, description
+* user by name
+
 # Grails
 
 
@@ -54,32 +90,4 @@ to another!
 
 # Cucumber
 
-Install cucumber:
-
-        gem install cucumber webrat Selenium
-
-Start Selenium:
-
-        selenium
-
-Running Cucumber for a specific feature file:
-
-        cucumber features/ticket_creation.feature
-
-Running specific tags:
-
-        cucumber --tags @wip
-
-# Webrat+Selenium
-
-We have only been able to run Selenium against an old version of Firefox (i.e. 3.6.23) on Ubuntu, not against more recent versions. 
-
-Set firefox executable path as follows on the command line:
-
-       export SELENIUM_BROWSER="*firefox /path/to/firefox"
-
-Webrat documentation: http://rdoc.info/github/brynary/webrat/master/frames
-
-## Questions, issues
-
-* Webrat vs. Capybara?
+See [Cucumber Wiki page](https://github.com/tychobrailleur/humphries/wiki/Cucumber)

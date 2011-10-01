@@ -1,11 +1,11 @@
 require 'rubygems'
- require 'rspec'
+require 'rspec'
 require 'webrat'
- 
- Webrat.configure do |config|
+
+Webrat.configure do |config|
   config.mode = :mechanize
- end
- 
+end
+
 class MechanizeWorld < Webrat::MechanizeAdapter
   include Webrat::Matchers
   include Webrat::Methods

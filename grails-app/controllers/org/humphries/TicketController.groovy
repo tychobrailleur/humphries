@@ -1,6 +1,5 @@
 package org.humphries
 
-//import grails.converters.*
 import grails.converters.deep.*
 import grails.plugins.springsecurity.Secured
     

@@ -11,8 +11,8 @@ fixture {
     adminPermission(org.humphries.auth.Permission, authority: 'ADMIN_ROLE')
 
     // User
-    pierre(org.humphries.auth.User, username: 'pierre', displayName: 'Pierre', password: 'password', enabled: true)
-    sebastien(org.humphries.auth.User, username: 'sebastien', displayName: 'Sébastien', password: 'password', enabled: true)
+    pierre(org.humphries.auth.User, username: 'pierre', displayName: 'Pierre Rust', password: 'password', enabled: true)
+    sebastien(org.humphries.auth.User, username: 'sebastien', displayName: 'Sébastien Le Callonnec', password: 'password', enabled: true)
 
     // Version
     firstVersion(org.humphries.Version,  versionNum: '0.0.1', 
