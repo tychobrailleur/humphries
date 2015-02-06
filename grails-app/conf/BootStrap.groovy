@@ -17,8 +17,8 @@ class BootStrap {
         boolean isProd = GrailsUtil.environment == GrailsApplication.ENV_PRODUCTION
 
         if (!isProd) {
-	    fixtureLoader.load('TestData')
-	}
+            fixtureLoader.load('TestData')
+        }
     }
 
     def destroy = {

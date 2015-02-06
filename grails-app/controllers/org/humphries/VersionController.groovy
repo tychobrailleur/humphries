@@ -1,8 +1,8 @@
 package org.humphries
 
-import grails.plugins.springsecurity.Secured
+import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(["hasRole('ADMIN_ROLE')"])
+@Secured(['ROLE_ADMIN'])
 class VersionController {
 
     def scaffold = Version

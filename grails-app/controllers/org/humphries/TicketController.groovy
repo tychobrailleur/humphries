@@ -1,7 +1,7 @@
 package org.humphries
 
 import grails.converters.deep.*
-import grails.plugins.springsecurity.Secured
+import grails.plugin.springsecurity.annotation.Secured
     
 import org.humphries.auth.*
 
@@ -20,8 +20,7 @@ class TicketController {
     }
     
     @Secured(['isAuthenticated()'])
-    //@Secured(['isFullyAuthenticated()'])
-    def create = {
+    def create() {
         if (request.method == "POST") {
             def project = Project.get(params.projectId)
             def user = User.get(springSecurityService.principal.id)
@@ -38,7 +37,7 @@ class TicketController {
     // be carefull with security constraints on an action that will be called
     // with ajax : a login redirection will generally be interpreted as sucess 
     @Secured(['isAuthenticated()'])
-    def addNote = {
+    def addNote() {
         log.debug(" addNote ")
         def ticket = Ticket.get(params.ticketId)
         def user = User.get(springSecurityService.principal.id)
@@ -50,7 +49,7 @@ class TicketController {
         render "OK"
     }
 
-    def getNotesJSON = {
+    def getNotesJSON() {
         def ticket = Ticket.get(params.ticketId)
         log.debug("get notes + " + ticket.id)
         

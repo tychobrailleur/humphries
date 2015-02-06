@@ -7,8 +7,8 @@ fixture {
 
 
     // Permissions
-    userPermission(org.humphries.auth.Permission, authority: 'USER_ROLE')
-    adminPermission(org.humphries.auth.Permission, authority: 'ADMIN_ROLE')
+    userPermission(org.humphries.auth.Permission, authority: 'ROLE_USER')
+    adminPermission(org.humphries.auth.Permission, authority: 'ROLE_ADMIN')
 
     // User
     pierre(org.humphries.auth.User, username: 'pierre', displayName: 'Pierre Rust', password: 'password', enabled: true)
