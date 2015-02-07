@@ -14,8 +14,14 @@ class TicketController {
     
     def springSecurityService
 
+    @Secured(['isAuthenticated()'])
+    def list() {
+        log.info("List tickets")
+        [tickets: Ticket.list()]
+    }
+
     // gets a ticket by its id, and returns a ticket for the show view
-    def show = {
+    def show() {
         [ticket: Ticket.get(params.id)]
     }
     
@@ -59,13 +65,13 @@ class TicketController {
             notes = array {
                 for (n in results) {
                     note = {id = n.id 
-                          text = n.text
-                          creationDate = n.creationDate
-                          creator = {
-                                id = n.creator.id
-                                name = n.creator.displayName
-                          }
-                     }
+                        text = n.text
+                        creationDate = n.creationDate
+                        creator = {
+                            id = n.creator.id
+                            name = n.creator.displayName
+                        }
+                    }
                 }
             }
         }
