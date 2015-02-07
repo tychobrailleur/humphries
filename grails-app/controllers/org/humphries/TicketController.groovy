@@ -48,8 +48,8 @@ class TicketController {
         def ticket = Ticket.get(params.ticketId)
         def user = User.get(springSecurityService.principal.id)
 
-        ticket.addToNotes( new Note(text:params.noteText, 
-                    creationDate: new Date(),creator:user))
+        ticket.addToNotes(new Note(text:params.noteText, 
+                    creationDate: new Date(), creator:user))
         ticket.save(failOnError: true)
         // render is needed so that the jquery knows everything went fine
         render "OK"
@@ -57,7 +57,7 @@ class TicketController {
 
     def getNotesJSON() {
         def ticket = Ticket.get(params.ticketId)
-        log.debug("get notes + " + ticket.id)
+        log.debug("get notes ${ticket.id}")
         
         def results = ticket.notes
         
