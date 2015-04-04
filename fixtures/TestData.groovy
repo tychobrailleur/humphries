@@ -25,8 +25,11 @@ fixture {
     grailsSpike(org.humphries.Ticket, name: "Grails spike",
                 reference: "HUMP-1",
                 description: "Exploratory spike on grails",
+        dateCreated: new Date(),
+        lastUpdated: new Date(),
                 project: humphries,
-                creator: pierre)
+        creator: pierre,
+        tags: [ intro, help ])
 }
 post {
     org.humphries.auth.UserPermission.create(pierre, userPermission, true)

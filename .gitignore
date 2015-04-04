@@ -10,3 +10,5 @@ test-result
 *.iml
 *.log
 web-app/WEB-INF/classes
+/humphries.ipr
+/humphries.iws

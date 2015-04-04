@@ -1,0 +1,21 @@
+#ticket {
+    h1 {
+        font-size: 24px;
+    }
+
+    dl {
+        dd:after {
+            display: block;
+            content: '';
+        }
+        dt {
+            display: inline-block;
+            font-weight: bolder;
+            min-width: 100px;
+        }
+        dd {
+            display: inline;
+        }
+    }    
+}
+

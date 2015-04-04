@@ -11,10 +11,6 @@ class Note {
     static belongsTo = [ticket:Ticket]
 
     static constraints = {
-        text(blank: false)
+        text blank: false
     }
-    static mapping = {
-        creator fetch: 'join'
-    }
-
 }

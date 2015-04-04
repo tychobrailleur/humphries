@@ -14,19 +14,21 @@ html * {
 body {
     background: #fff;
     color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 16px;
+/*    font: 13px verdana, arial, helvetica, sans-serif; */
 }
 
 #header {
-  background-color: #000;
-}
+    background-color: #000;
 
-#header h1 {
-  margin: 0;
-  padding: 5px;
-  font: 24px Verdana, Arial, Helvetica, sans-serif;
-  font-weight: bolder;
-  color: #fff;
+    h1 {
+        margin: 0;
+        padding: 5px;
+        // font: 24px Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        color: #fff;        
+    }
 }
 
 #header a:link, #header a:visited, #header a:hover, #header a:active {
@@ -72,7 +74,7 @@ ul {
 input, select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
-    font: 11px verdana, arial, helvetica, sans-serif;
+//    font: 11px verdana, arial, helvetica, sans-serif;
     margin: 2px 0;
     padding: 2px 4px;
 }
@@ -174,7 +176,7 @@ tr {
     border: 0;
 }
 td, th {
-    font: 11px verdana, arial, helvetica, sans-serif;
+//    font: 11px verdana, arial, helvetica, sans-serif;
     line-height: 12px;
     padding: 5px 6px;
     text-align: left;
@@ -301,4 +303,9 @@ th.desc a {
 .buttons input.save {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
+}
+
+
+#content {
+    padding: 20px 80px 20px 80px;
 }

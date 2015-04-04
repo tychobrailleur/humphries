@@ -11,7 +11,6 @@ class Ticket {
     User creator
     User assignedTo
 
-
     Date dateCreated
     Date lastUpdated
 
@@ -23,12 +22,12 @@ class Ticket {
     static hasMany = [tags:Tag, notes:Note]
 
     static constraints = {
-        name(blank: false)
-        reference(blank: false)
-        description(blank: false)
-        assignedTo(nullable: true)
-        targetVersion(nullable: true)
-        detectedVersion(nullable: true)
-        resolvedVersion(nullable: true)
+        name blank: false
+        reference blank: false
+        description blank: false
+        assignedTo nullable: true
+        targetVersion nullable: true
+        detectedVersion nullable: true
+        resolvedVersion nullable: true
     }
 }

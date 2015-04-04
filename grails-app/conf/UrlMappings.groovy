@@ -7,12 +7,7 @@ class UrlMappings {
       }
     }
 
-    // home page is currently the list of tickets
-    "/" {
-      controller = 'ticket'
-      action = 'list'
-    }
-
+    "/" {controller = 'home'} 
     "500"(view:'/error')
   }
 }
