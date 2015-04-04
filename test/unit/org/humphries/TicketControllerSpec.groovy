@@ -3,7 +3,7 @@ package org.humphries
 import org.humphries.auth.User
 
 import grails.test.mixin.*
-    import spock.lang.Specification
+import spock.lang.Specification
 import spock.lang.Shared
 import grails.test.mixin.Mock
 import grails.buildtestdata.mixin.Build

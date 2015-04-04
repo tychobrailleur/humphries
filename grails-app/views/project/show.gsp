@@ -14,7 +14,7 @@
         <dt>Code:</dt>
         <dd>${project.code}</dd>
         <dt><g:message code="tags" /></dt>
-        <dd><g:join in="${project.tags*.name}" /></dd>
+        <dd><tag:list model="${project}" /></dd>
         <dt>Members:</dt>
         <dd>
           <ul>

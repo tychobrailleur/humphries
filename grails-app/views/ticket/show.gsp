@@ -17,7 +17,7 @@
           <dt><g:message code="assigned.to" /></dt>
           <dd><g:link controller="user" action="show" id="${ticket.assignedTo?.id}">${ticket.assignedTo}</g:link></dd>
           <dt><g:message code="tags" /></dt>
-          <dd><g:join in="${ticket.tags*.name}" /></dd>
+          <dd><tag:list model="${ticket}" /></dd>
         </dl>
 
         <div id="dynamic_notes">
@@ -28,7 +28,7 @@
                 var noteUrl='<g:createLink controller="ticket" action="getNotesJSON" />';
                 jQuery.getJSON(
                     noteUrl,
-                    {ticketId : '${ticket.id}'},
+                    {ticketId: '${ticket.id}'},
                         function(data) {
                         var items = [];
                         // definitely need to use some client-side templating solution
