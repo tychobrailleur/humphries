@@ -2,8 +2,26 @@ package org.humphries
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['isAuthenticated()'])
 class ProjectController {
 
-    def scaffold = Project
+    def springSecurityService
+    
+    def show(Long id) {
+        Project project = Project.get(id)
+        if (!project) {
+            render(status: 404)
+            return
+        }
+
+        def user = springSecurityService.currentUser
+
+        if (!(user in project.members)) {
+            render(status: 403)
+            return
+        }
+
+        [ project: project ]
+    }
 }
+

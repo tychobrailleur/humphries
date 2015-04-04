@@ -1,5 +1,4 @@
 fixture {
-    humphries(org.humphries.Project, name: "Humphries", code: "HUMP")
 
     // Tags
     intro(org.humphries.Tag, name: 'Intro')
@@ -14,6 +13,9 @@ fixture {
     pierre(org.humphries.auth.User, username: 'pierre', displayName: 'Pierre Rust', password: 'password', enabled: true)
     sebastien(org.humphries.auth.User, username: 'sebastien', displayName: 'Sébastien Le Callonnec', password: 'password', enabled: true)
 
+    // Project
+    humphries(org.humphries.Project, name: "Humphries", code: "HUMP", members: [pierre])
+    
     // Version
     firstVersion(org.humphries.Version,  versionNum: '0.0.1', 
                 name: 'very first version',

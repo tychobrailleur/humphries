@@ -7,8 +7,8 @@
         <g:javascript library="application" />
         <g:javascript library="jquery" plugin="jquery"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <asset:stylesheet src="main.css" />
         <asset:stylesheet src="app.css" />
+        <asset:stylesheet src="main.css" />
     </head>
     <body>
         <div id="spinner" class="spinner" style="display:none;">

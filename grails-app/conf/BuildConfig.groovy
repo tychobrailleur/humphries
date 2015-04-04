@@ -58,6 +58,6 @@ grails.project.dependency.resolution = {
         runtime ':hibernate4:4.3.6.1'
         runtime ':database-migration:1.4.0'
         runtime ':jquery:1.11.1'
-        
+        runtime ':twitter-bootstrap:3.3.4'
     }
 }
