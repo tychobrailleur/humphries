@@ -1,21 +1,21 @@
 html {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    background: #fff;
-    color: #333;
+  background: #fff;
+  color: #333;
 }
 
 #header {
-    background-color: #000;
+  background-color: #000;
 
-    h1 {
-        margin: 0;
-        padding: 5px;
-        font-weight: bolder;
-        color: #fff;        
-    }
+  h1 {
+    margin: 0;
+    padding: 5px;
+    font-weight: bolder;
+    color: #fff;        
+  }
 }
 
 #header a:link, #header a:visited, #header a:hover, #header a:active {
@@ -42,11 +42,11 @@ body {
 }
 
 a:link, a:visited, a:hover {
-    color: #666;
-    font-weight: bold;
-    text-decoration: none;
+  color: #666;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 #content {
-    padding: 20px 80px 20px 80px;
+  padding: 20px 80px 20px 80px;
 }
