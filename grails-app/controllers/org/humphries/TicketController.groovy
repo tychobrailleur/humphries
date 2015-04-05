@@ -50,7 +50,7 @@ class TicketController {
     def addNote() {
         log.debug(" addNote ")
         def ticket = Ticket.get(params.ticketId)
-        def user = User.get(springSecurityService.principal.id)
+        def user = springSecurityService.currentUser
 
         ticket.addToNotes(text:params.noteText, 
             creationDate: new Date(), creator:user).save(flush: true)
@@ -69,6 +69,16 @@ class TicketController {
         log.debug("get notes ${ticket.id}")
         
         renderNotes(ticket)
+    }
+
+    def assignToMe(String id) {
+        def ticket = Ticket.get(id)
+        def user = springSecurityService.currentUser
+
+        ticket.assignedTo = user
+        ticket.save(flush: true)
+        
+        render ticket as JSON
     }
 
     /**

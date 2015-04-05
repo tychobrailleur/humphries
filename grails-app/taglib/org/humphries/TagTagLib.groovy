@@ -8,8 +8,6 @@ class TagTagLib {
     def list = { attrs, body ->
         def tags = attrs.model.tags
 
-        log.info "${tags} ${attrs.model}"
-
         out << tags.collect {
             render(template: '/tag/tag', model: [ tag: it ])
         }.collect { it.toString().trim() }.join(', ')

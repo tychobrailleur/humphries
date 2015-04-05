@@ -1,5 +1,3 @@
-
-<%@ page import="org.humphries.Project" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,10 +17,11 @@
         <dd>
           <ul>
             <g:each in="${project.members}" var="member">
-              <li><g:link controller="user" action="show" id="${member.id}">${member.displayName}</g:link></li>
-            </g:each></ul></dd>
+              <li><friendly:link controller="user" action="show" model="${member}">${member.displayName}</friendly:link></li>
+            </g:each>
+          </ul>
+        </dd>
       </dl>
-
 
       <div id="tickets">
         <h3>Tickets</h3>
@@ -30,6 +29,13 @@
           <g:each in="${project.tickets}" var="ticket">
             <li><g:link controller="ticket" action="show" params="${[id: ticket.reference]}">${ticket.name}</g:link></li>
           </g:each>
+        </ul>
+      </div>
+
+      <div id="actions">
+        <ul>
+          <li><g:link controller="project" action="addTicket" id="${project.id}"><span class="glyphicon glyphicon-plus"></span> Create Ticket</g:link></li>
+          <li><g:link controller="project" action="addMember" id="${project.id}"><span class="glyphicon glyphicon-plus"></span> Add Member</g:link></li>
         </ul>
       </div>
     </div>

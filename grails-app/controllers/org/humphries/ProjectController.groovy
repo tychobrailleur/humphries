@@ -23,5 +23,9 @@ class ProjectController {
 
         [ project: project ]
     }
+
+    def addTicket(Long id) {
+        def project = Project.get(id)    
+    }
 }
 

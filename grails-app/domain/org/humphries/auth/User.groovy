@@ -12,9 +12,13 @@ class User {
     boolean accountLocked
     boolean passwordExpired
 
+    String slug
+    static slugCandidate = 'displayName'
+    
     static constraints = {
         username blank: false, unique: true
         password blank: false
+        slug nullable: true
     }
 
     static mapping = {

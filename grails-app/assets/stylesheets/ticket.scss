@@ -1,21 +1,28 @@
 #ticket, #project {
-    h1 {
-        font-size: 24px;
+  h1 {
+    font-size: 24px;
+  }
+  
+  dl {
+    dd:after {
+      display: block;
+      content: '';
     }
+    dt {
+      display: inline-block;
+      font-weight: bolder;
+      min-width: 100px;
+    }
+    dd {
+      display: inline;
+    }
+  }
 
-    dl {
-        dd:after {
-            display: block;
-            content: '';
-        }
-        dt {
-            display: inline-block;
-            font-weight: bolder;
-            min-width: 100px;
-        }
-        dd {
-            display: inline;
-        }
-    }    
+  #actions {
+    li {
+      list-style: none;
+      display: inline;
+      margin-right: 20px;
+    }
+  }
 }
-
