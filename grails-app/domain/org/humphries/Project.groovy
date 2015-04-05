@@ -22,11 +22,13 @@ class Project {
     String description
     String code
 
+    Workflow workflow
+
     static hasMany = [
         versions: Version,
-        tags:Tag, 
+        tags:Tag,
         tickets:Ticket,
-        members: User, 
+        members: User,
         subProjects: Project
     ]
 

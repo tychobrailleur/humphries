@@ -20,6 +20,8 @@
           <g:else>
             &ndash;
           </g:else></span> (<g:remoteLink action="assignToMe" id="${ticket.id}" onSuccess="updateAssignee(data)">Assign to me</g:remoteLink>)</dd>
+        <dt>Status:</dt>
+        <dd>${ticket.state.name}</dd>
         <dt><g:message code="tags" /></dt>
         <dd><tag:list model="${ticket}" /></dd>
       </dl>

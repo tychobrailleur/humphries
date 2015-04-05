@@ -14,6 +14,8 @@ class Ticket {
     Date dateCreated
     Date lastUpdated
 
+    State state
+    
     static belongsTo = [project:Project,
         detectedVersion: Version,
         targetVersion: Version,

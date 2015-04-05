@@ -4,7 +4,6 @@ fixture {
     intro(org.humphries.Tag, name: 'Intro')
     help(org.humphries.Tag, name: 'Help Wanted')
 
-
     // Permissions
     userPermission(org.humphries.auth.Permission, authority: 'ROLE_USER')
     adminPermission(org.humphries.auth.Permission, authority: 'ROLE_ADMIN')
@@ -13,8 +12,16 @@ fixture {
     pierre(org.humphries.auth.User, username: 'pierre', displayName: 'Pierre Rust', password: 'password', enabled: true)
     sebastien(org.humphries.auth.User, username: 'sebastien', displayName: 'Sébastien Le Callonnec', password: 'password', enabled: true)
 
+    assgined(org.humphries.State, name: 'Assigned')
+    start(org.humphries.State, name: 'New', nextStates: [ assgined ])
+
+    workflow(org.humphries.Workflow, name: 'Basic', startState: start, creator: pierre,
+        dateCreated: new Date(),
+        lastUpdated: new Date())
+
+    
     // Project
-    humphries(org.humphries.Project, name: "Humphries", code: "HUMP", members: [pierre])
+    humphries(org.humphries.Project, name: "Humphries", code: "HUMP", members: [pierre], workflow: workflow)
     
     // Version
     firstVersion(org.humphries.Version,  versionNum: '0.0.1', 
@@ -29,7 +36,8 @@ fixture {
                 description: "Exploratory spike on grails",
         dateCreated: new Date(),
         lastUpdated: new Date(),
-                project: humphries,
+        project: humphries,
+        state: start,
         creator: pierre,
         tags: [ intro, help ])
 }
