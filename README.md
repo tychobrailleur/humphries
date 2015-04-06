@@ -68,7 +68,7 @@ to another!
 
         grails create-domain-class org.humphries.MyNewClass
     
-* Create a controller for MyNewClass (MyNewClassController)
+* Create a controller for `MyNewClass` (`MyNewClassController`)
 
         grails create-controller org.humphries.MyNewClass
 
@@ -80,14 +80,21 @@ to another!
 
 ## Questions
 
-1. When to use custom controllers vs. scaffolding?
-
-    → Pierre: also, dynamic scaffolding vs. static scaffolding?
-
 1. Unit testing: what to test vs. not to test (tied to scaffolding)?
 1. Licensing
+
+
+# Implementation
+
+The project uses a local plugin that has not been published yet,
+`friendly-url`, that creates friendly URLs, so you may encounter
+difficulties running the project as-is.
 
 
 # Cucumber
 
 See [Cucumber Wiki page](https://github.com/tychobrailleur/humphries/wiki/Cucumber)
+
+Cucumber now uses Geb.   To run functional tests:
+
+    grails test-app functional:cucumber
