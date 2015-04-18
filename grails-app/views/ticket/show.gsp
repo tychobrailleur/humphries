@@ -26,37 +26,15 @@
         <dd><tag:list model="${ticket}" /></dd>
       </dl>
       
-      <div id="dynamic_notes">
+      <div ng-controller="NotesController" model="${ticket.id}">
+        <ul>
+          <li ng-repeat="note in notes.notes">
+            <div class="createDate">{{note.creationDate}}</div>
+            <div class="author">{{note.creator.name}}</div>
+            <div class="text">{{note.text}}</div>
+          </li>
+        </ul>
       </div>
-      
-      <g:javascript>
-        function displayNotes() {
-          var noteUrl='<g:createLink controller="ticket" action="getNotesJSON" />';
-          jQuery.getJSON(
-                    noteUrl,
-                    {ticketId: '${ticket.id}'},
-                        function(data) {
-                        var items = [];
-                        // definitely need to use some client-side templating solution
-                        $.each(data.notes, function(index, note) {
-                            noteHtml = '<li id="note_' + note.id + '">';
-                            noteHtml+= '<div class="creationDate">' + note.creationDate +'</div>';
-                            noteHtml+= '<div class="author">' + note.creator.name+'</div>';
-                            noteHtml+= '<div class="text">' + note.text+'</div>';
-                            noteHtml+= '</li>';
-                            items.push(noteHtml);
-                        });
-                        $('#dynamic_notes').html(
-                            $('<ul/>', { 'class': 'my-new-list',
-                              html: items.join('') }));
-                    }
-                );
-            }
-
-            $(document).ready(function(){
-               displayNotes();
-             });
-        </g:javascript>
 
         <sec:ifNotLoggedIn>
         You must be logged in to add a note
@@ -69,7 +47,6 @@
               <div id="message"></div>
               <g:formRemote url="[controller: 'ticket', action :'addNote']"
                             update="message"
-                            onSuccess="displayNotes()"
                             name="addNoteForm">
                 <input type="hidden" name="ticketId" value="${ticket.id}"/>
                 <textarea rows="2" cols="20" name="noteText"">your note</textarea>

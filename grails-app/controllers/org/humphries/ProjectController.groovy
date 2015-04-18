@@ -5,8 +5,10 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['isAuthenticated()'])
 class ProjectController {
 
+    static allowedMethods = [ create: 'GET', save: 'POST' ]
+
     def springSecurityService
-    
+
     def show(Long id) {
         Project project = Project.get(id)
         if (!project) {
@@ -25,7 +27,29 @@ class ProjectController {
     }
 
     def addTicket(Long id) {
-        def project = Project.get(id)    
+        def project = Project.get(id)
+    }
+
+    @Secured(["hasRole('ROLE_ADMIN')"])
+    def create() {}
+
+    @Secured(["hasRole('ROLE_ADMIN')"])
+    def save() {
+        def workflow = Workflow.findByName('Basic')
+
+        def project = new Project(name: params.name,
+            description: params.description,
+            code: params.code,
+            workflow: workflow)
+
+        project.addToMembers(springSecurityService.currentUser)
+
+        project.save(flush: true)
+
+        if (project.hasErrors()) {
+            // TODO handle error
+        }
+
+        show(project.id)
     }
 }
-
