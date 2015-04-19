@@ -5,7 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['isAuthenticated()'])
 class ProjectController {
 
-    static allowedMethods = [ create: 'GET', save: 'POST' ]
+    static allowedMethods = [ create: 'GET', save: 'POST', saveTicket: 'POST' ]
 
     def springSecurityService
 
@@ -28,6 +28,8 @@ class ProjectController {
 
     def addTicket(Long id) {
         def project = Project.get(id)
+
+        [ project: project ]
     }
 
     @Secured(["hasRole('ROLE_ADMIN')"])
@@ -51,5 +53,32 @@ class ProjectController {
         }
 
         show(project.id)
+    }
+
+    def saveTicket() {
+        def project = Project.get(params.projectId)
+        def user = springSecurityService.currentUser
+
+        if (user in project.members) {
+            def workflow = project.workflow
+
+            Ticket ticket = new Ticket(name: params.name,
+                description: params.description,
+                reference: project.getNextTicketReference(),
+                creator: user,
+                state: workflow.startState)
+            
+            project.addToTickets(ticket).save(flush: true)
+
+            if (project.hasErrors()) {
+                // TODO handle errors
+            } else {
+                redirect(controller: 'ticket', action: 'show', params: [ id: ticket.id ])
+            }
+            
+        } else {
+            response.status = 403
+            render "You can't add a ticket to this project."
+        }
     }
 }

@@ -44,6 +44,10 @@ class User {
     }
 
     protected void encodePassword() {
+        if (!springSecurityService) {
+            throw new RuntimeException("Uninitialized security service for ${displayName}")
+        }
+        
         password = springSecurityService.encodePassword(password)
     }
 }

@@ -1,5 +1,3 @@
-
-
 <%@ page import="org.humphries.Project" %>
 <html>
     <head>

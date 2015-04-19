@@ -10,9 +10,8 @@ import grails.buildtestdata.mixin.Build
 import grails.test.mixin.domain.DomainClassUnitTestMixin
 
 @TestFor(TicketController)
-@TestMixin(DomainClassUnitTestMixin)
-@Mock([Ticket, User, Note])
-@Build([Ticket, User, Note])
+@Mock([Ticket, User, Note, Project, Workflow, State])
+@Build([Ticket, User, Note, Project, Workflow, State])
 class TicketControllerSpec extends Specification {
 
     @Shared
@@ -22,16 +21,21 @@ class TicketControllerSpec extends Specification {
     Ticket ticket
 
     def setup() {
-        user = User.build(username: 'test')
+        user = User.build(username: 'test', password: 'password')        
         user.springSecurityService = [
             encodePassword: { String password ->
                 password
             }
         ]
-        user.save(flush: true)
-        ticket = Ticket.build(name: 'foobar', creator: user, description: 'quxbaz', reference: 'boo').save(flush: true)
+        user.save(flush: true, failOnError: true)
+
+        def project = Project.build(workflow: Workflow.build(creator: user))
+        project.addToTickets(name: 'foobar', creator: user, description: 'quxbaz', reference: 'boo', assignedTo: user, state: State.build())
+        project.save(flush: true, failOnError: true)
         
-        controller.springSecurityService = [principal: [id: user.id]]
+        ticket = project.tickets.first()
+        
+        controller.springSecurityService = [currentUser: user]
     }
 
     void testShow() {
@@ -48,9 +52,8 @@ class TicketControllerSpec extends Specification {
     
     void testAddNote() {
         given:
-        params.ticketId = ticket.id
-        params.noteText = 'foobar'
         request.method = 'POST'
+        request.json = [ ticketId: ticket.id, noteText: 'foobar' ]
 
         when:
         controller.addNote()

@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="ticket" ng-controller="NotesController" model="${ticket.id}">
-      <div class="breadcrumb"><g:link controller="project" action="show" model="${ticket.project}">${ticket.project.name}</g:link> &gt; ${ticket.reference}</div>
+      <div class="breadcrumb"><g:link controller="project" action="show" id="${ticket.project.id}">${ticket.project.name}</g:link> &gt; ${ticket.reference}</div>
 
       <h1>${ticket.name}</h1>
       <p>${ticket.description}</p>

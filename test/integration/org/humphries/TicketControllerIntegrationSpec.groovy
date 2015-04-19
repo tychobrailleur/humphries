@@ -14,8 +14,7 @@ class TicketControllerIntegrationSpec extends IntegrationSpec {
 
     void testAddNote() {
         given:
-        ticketController.params.ticketId = 1
-        ticketController.params.noteText = 'Very insightful note'
+        ticketController.request.json = [ ticketId: 1, noteText: 'Very insightful note' ]
         ticketController.request.method = 'POST'
         
         when:

@@ -37,4 +37,9 @@ class Project {
         code(blank: false)
         description(nullable: true)
     }
+
+    def getNextTicketReference() {
+        def lastReferenceNumber = tickets.collect{ it.reference.split('-')[1].toInteger() }.leftShift(0).sort().last()
+        return "${code}-${lastReferenceNumber + 1}"
+    }
 }
