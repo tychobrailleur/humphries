@@ -1,10 +1,19 @@
 'use strict';
 
-app.service('notesService', [ '$resource', function($resource) {
+app.service('notesService', [ '$http', function($http) {
     return {
-        getNotes: function(ticketId) {
-            var Notes = $resource('../../ticket/getNotesJSON', { ticketId: '@id' });
-            return Notes.get({ticketId: ticketId});
+        getNotes: function(ticketId, callback) {
+            $http.get('../../ticket/getNotesJSON', { params: {ticketId: ticketId} })
+                .success(function(data, status, headers, config) {
+                    callback(data);
+                });
+        },
+
+        addNote: function(ticketId, note, callback) {
+            $http.post('../../ticket/addNote', { ticketId: ticketId, noteText: note.text })
+                .success(function(data, status, headers, config) {
+                    callback(data);
+                });
         }
     };
 }]);

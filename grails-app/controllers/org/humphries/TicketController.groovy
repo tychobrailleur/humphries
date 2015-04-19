@@ -2,7 +2,7 @@ package org.humphries
 
 import grails.converters.deep.*
 import grails.plugin.springsecurity.annotation.Secured
-    
+
 import org.humphries.auth.*
 
 /*
@@ -12,7 +12,7 @@ import org.humphries.auth.*
 class TicketController {
 
     static allowedMethods = [ create: 'POST', addNote: 'POST' ]
-    
+
     def springSecurityService
 
     def list() {
@@ -29,15 +29,15 @@ class TicketController {
         if (!ticket) {
             ticket = Ticket.get(id)
         }
-        
+
         [ ticket: ticket ]
     }
 
     def create() {
         def project = Project.get(params.projectId)
         def user = User.get(springSecurityService.principal.id)
-        
-        def ticket = new Ticket(name: params.name, 
+
+        def ticket = new Ticket(name: params.name,
             description: params.description,
             code: params.code,
             creator: user,
@@ -46,19 +46,21 @@ class TicketController {
     }
 
     // be carefull with security constraints on an action that will be called
-    // with ajax : a login redirection will generally be interpreted as success 
+    // with ajax : a login redirection will generally be interpreted as success
     def addNote() {
         log.debug(" addNote ")
-        def ticket = Ticket.get(params.ticketId)
+        def jsonObject = request.JSON
+
+        def ticket = Ticket.get(jsonObject.ticketId)
         def user = springSecurityService.currentUser
 
-        ticket.addToNotes(text:params.noteText, 
+        ticket.addToNotes(text: jsonObject.noteText,
             creationDate: new Date(), creator:user).save(flush: true)
 
         if (ticket.hasErrors()) {
             response.status = 400
-            render
-        } else {        
+            render ticket.errors
+        } else {
             // render is needed so that the jquery knows everything went fine
             renderNotes(ticket)
         }
@@ -67,7 +69,7 @@ class TicketController {
     def getNotesJSON() {
         def ticket = Ticket.get(params.ticketId)
         log.debug("get notes ${ticket.id}")
-        
+
         renderNotes(ticket)
     }
 
@@ -77,7 +79,7 @@ class TicketController {
 
         ticket.assignedTo = user
         ticket.save(flush: true)
-        
+
         render ticket as JSON
     }
 
@@ -87,8 +89,8 @@ class TicketController {
     private renderNotes(Ticket ticket) {
         render(contentType:"text/json") {
             notes = array {
-                for (n in ticket.notes) {
-                    note = {id = n.id 
+                for (n in ticket.notes.sort { it.creationDate }) {
+                    note = {id = n.id
                         text = n.text
                         creationDate = n.creationDate
                         creator = {

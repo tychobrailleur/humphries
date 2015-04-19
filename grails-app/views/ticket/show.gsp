@@ -7,7 +7,7 @@
     <asset:javascript src="ticket.js" />
   </head>
   <body>
-    <div id="ticket">
+    <div id="ticket" ng-controller="NotesController" model="${ticket.id}">
       <h1>${ticket.name}</h1>
       <p>${ticket.reference}</p>
       <p>${ticket.description}</p>
@@ -26,10 +26,10 @@
         <dd><tag:list model="${ticket}" /></dd>
       </dl>
       
-      <div ng-controller="NotesController" model="${ticket.id}">
+      <div>
         <ul>
           <li ng-repeat="note in notes.notes">
-            <div class="createDate">{{note.creationDate}}</div>
+            <div class="createDate">{{note.creationDate | date:"dd/MM/yyyy 'at' h:mma"}}</div>
             <div class="author">{{note.creator.name}}</div>
             <div class="text">{{note.text}}</div>
           </li>
@@ -45,13 +45,11 @@
             <dt>Add a new note:</dt>
             <dd>
               <div id="message"></div>
-              <g:formRemote url="[controller: 'ticket', action :'addNote']"
-                            update="message"
-                            name="addNoteForm">
-                <input type="hidden" name="ticketId" value="${ticket.id}"/>
-                <textarea rows="2" cols="20" name="noteText"">your note</textarea>
-                <g:submitButton name="Add Note" />
-              </g:formRemote>
+              <form>
+                <input type="hidden" name="ticketId" value="${ticket.id}" ng-model="note.ticketId">
+                <textarea rows="2" cols="20" name="noteText" placeholder="Your Note..." required ng-model="note.text"></textarea>
+                <button ng-click="addNote()">Add Note</button>
+              </form>
             </dd>
           </dl>
         </sec:ifLoggedIn>
