@@ -8,10 +8,11 @@
   </head>
   <body>
     <div id="ticket" ng-controller="NotesController" model="${ticket.id}">
+      <div class="breadcrumb"><g:link controller="project" action="show" model="${ticket.project}">${ticket.project.name}</g:link> &gt; ${ticket.reference}</div>
+
       <h1>${ticket.name}</h1>
-      <p>${ticket.reference}</p>
       <p>${ticket.description}</p>
-      
+
       <dl>
         <dt><g:message code="created.by" /></dt>
         <dd><friendly:link controller="user" action="show" model="${ticket.creator}">${ticket.creator.displayName}</friendly:link></dd>
@@ -25,15 +26,19 @@
         <dt><g:message code="tags" /></dt>
         <dd><tag:list model="${ticket}" /></dd>
       </dl>
-      
-      <div>
+
+      <div id="notes">
+        <h2>Notes</h2>
         <ul>
           <li ng-repeat="note in notes.notes">
-            <div class="createDate">{{note.creationDate | date:"dd/MM/yyyy 'at' h:mma"}}</div>
-            <div class="author">{{note.creator.name}}</div>
+            <div ng-class-odd="'odd'" ng-class-even="'even'">
+              <div class="author">{{note.creator.name}}</div>
+              <div class="createDate">{{note.creationDate | date:"dd/MM/yyyy 'at' h:mma"}}</div>
             <div class="text">{{note.text}}</div>
+            </div>
           </li>
         </ul>
+        <p ng-if="!notes.notes">Currently no notes.</p>
       </div>
 
         <sec:ifNotLoggedIn>
@@ -47,7 +52,7 @@
               <div id="message"></div>
               <form>
                 <input type="hidden" name="ticketId" value="${ticket.id}" ng-model="note.ticketId">
-                <textarea rows="2" cols="20" name="noteText" placeholder="Your Note..." required ng-model="note.text"></textarea>
+                <textarea rows="5" cols="70" name="noteText" placeholder="Your Note..." required ng-model="note.text"></textarea><br>
                 <button ng-click="addNote()">Add Note</button>
               </form>
             </dd>

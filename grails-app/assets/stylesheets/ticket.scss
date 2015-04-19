@@ -1,8 +1,4 @@
 #ticket, #project {
-  h1 {
-    font-size: 24px;
-  }
-  
   dl {
     dd:after {
       display: block;
@@ -23,6 +19,25 @@
       list-style: none;
       display: inline;
       margin-right: 20px;
+    }
+  }
+
+  #notes {
+    .author {
+      font-weight: bold;
+    }
+
+    li {
+      list-style-type: none;
+      border-bottom: 1px dotted #555;
+    }
+
+    li>div {
+      padding: 5px 20px 5px 10px;
+    }
+
+    .odd {
+      background-color: #ddd;
     }
   }
 }
