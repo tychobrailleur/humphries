@@ -29,6 +29,9 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+        compile 'javax.validation:validation-api:1.1.0.Final'
+
+        runtime 'org.hibernate:hibernate-validator:5.0.3.Final'
         runtime 'mysql:mysql-connector-java:5.1.13'
         runtime 'hsqldb:hsqldb:1.8.0.10'
         runtime 'commons-beanutils:commons-beanutils:1.8.3'
@@ -68,7 +71,7 @@ grails.project.dependency.resolution = {
         runtime ':database-migration:1.4.0'
         runtime ':jquery:1.11.1'
         runtime ':twitter-bootstrap:3.3.4'
-        
+
         test ':cucumber:1.1.0'
         test ':geb:0.10.0'
     }
