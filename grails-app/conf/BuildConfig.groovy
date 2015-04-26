@@ -11,7 +11,7 @@ grails.project.fork = [
 ]
 
 grails.project.dependency.resolver = 'maven'
-grails.plugin.location.'friendly-url' = '../friendly-url'
+//grails.plugin.location.'friendly-url' = '../friendly-url'
 grails.project.dependency.resolution = {
     inherits 'global'
     log 'warn'
@@ -64,7 +64,7 @@ grails.project.dependency.resolution = {
         compile ':fixtures:1.3'
         compile ':build-test-data:2.4.0'
         compile ':dbconsole:1.1'
-        compile ':friendly-url:0.1'
+        //        compile ':friendly-url:0.1'
 
         // plugins needed at runtime but not for compilation
         runtime ':hibernate4:4.3.6.1'
